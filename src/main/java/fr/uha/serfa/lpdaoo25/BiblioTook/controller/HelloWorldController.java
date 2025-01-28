@@ -5,6 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.awt.*;
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.util.Date;
 
 @RestController
 public class HelloWorldController {
@@ -31,7 +34,10 @@ public class HelloWorldController {
 
     @GetMapping("/chat")
     public SchroedingerCat getCat(){
+        LocalDate naissance  = LocalDate.of(2012, 10, 29);
         return new SchroedingerCat("miaou");
     }
+
+
 
 }
