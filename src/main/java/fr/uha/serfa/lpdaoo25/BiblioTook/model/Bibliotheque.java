@@ -44,10 +44,13 @@ public class Bibliotheque {
         return auteurs;
     }
 
-    public Set<Auteur> auteurParNom(String nomRecherché){
+    public Set<Auteur> auteurParNom(String nomRecherche){
         Set<Auteur> auteursQuiMatchent = new HashSet<>();
-        //???
-        //???
+        for (Auteur a : this.tousLesAuteurs()){
+            if(a.getNom().contains(nomRecherche)){
+                auteursQuiMatchent.add(a);
+            }
+        }
         return  auteursQuiMatchent;
     }
 

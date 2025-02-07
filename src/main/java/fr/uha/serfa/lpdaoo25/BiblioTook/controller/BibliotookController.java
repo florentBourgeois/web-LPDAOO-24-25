@@ -32,12 +32,13 @@ public class BibliotookController {
         return new AuteurSecurise(a);
     }
 
-    @GetMapping( "/bibliotook/auteur/XYZ")
-    public String getAuteurByName() {
-        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
-        Set<Auteur> auteurs = b.tousLesAuteurs();
 
-        return "name";
+    @GetMapping( "/bibliotook/auteur/{name}")
+    public Set<Auteur> getAuteurByName( @PathVariable(value = "name") String nomRecherche) {
+        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
+        Set<Auteur> auteurs = b.auteurParNom(nomRecherche);
+
+        return auteurs;
 
     }
 
