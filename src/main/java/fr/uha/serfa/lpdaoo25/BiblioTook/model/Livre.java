@@ -9,6 +9,7 @@ public class Livre {
     private Autheur autheur = new Autheur();
 
     public Livre() {
+        this.autheur.addLivre(this);
     }
 
     public Livre(String titre, String ISBN, LocalDate datePublication, Autheur autheur) {
@@ -16,6 +17,7 @@ public class Livre {
         this.ISBN = ISBN;
         this.datePublication = datePublication;
         this.autheur = autheur;
+        this.autheur.addLivre(this);
     }
 
     public String getTitre() {

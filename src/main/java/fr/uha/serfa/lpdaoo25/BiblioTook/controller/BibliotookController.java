@@ -3,6 +3,7 @@ package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Autheur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
+import fr.uha.serfa.lpdaoo25.BiblioTook.utils.BibliothequeFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,11 @@ public class BibliotookController {
     @GetMapping("/bibliotook/bibliotheque")
     public Bibliotheque basicBibliotheque(){
         return new Bibliotheque();
+    }
+
+    @GetMapping("/bibliotook/bibliothequeBig")
+    public Bibliotheque bigBibliotheque(){
+        return BibliothequeFactory.getBigBibliotheque();
     }
 
 }
