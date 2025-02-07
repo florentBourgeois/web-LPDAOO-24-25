@@ -39,7 +39,6 @@ public class BibliotookController {
         Set<Auteur> auteurs = b.auteurParNom(nomRecherche);
 
         return auteurs;
-
     }
 
 
