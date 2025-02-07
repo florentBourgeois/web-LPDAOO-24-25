@@ -6,10 +6,7 @@ import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
 import fr.uha.serfa.lpdaoo25.BiblioTook.utils.BibliothequeFactory;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -44,6 +41,11 @@ public class BibliotookController {
             auteurSecurises.add(new AuteurSecurise(a));
         }
         return auteurSecurises;
+    }
+
+    @PostMapping("/bibliotook/livre")
+    public Livre ajouterLivre(@RequestBody Livre l){
+        return  l;
     }
 
 
