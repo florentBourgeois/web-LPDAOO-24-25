@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -34,11 +35,15 @@ public class BibliotookController {
 
 
     @GetMapping( "/bibliotook/auteur/{name}")
-    public Set<Auteur> getAuteurByName( @PathVariable(value = "name") String nomRecherche) {
+    public List<AuteurSecurise> getAuteurByName( @PathVariable(value = "name") String nomRecherche) {
         Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
         Set<Auteur> auteurs = b.auteurParNom(nomRecherche);
 
-        return auteurs;
+        List<AuteurSecurise> auteurSecurises = new ArrayList<>();
+        for (Auteur a : auteurs){
+            auteurSecurises.add(new AuteurSecurise(a));
+        }
+        return auteurSecurises;
     }
 
 
