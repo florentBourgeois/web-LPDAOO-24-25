@@ -47,7 +47,7 @@ public class Bibliotheque {
     public Set<Auteur> auteurParNom(String nomRecherche){
         Set<Auteur> auteursQuiMatchent = new HashSet<>();
         for (Auteur a : this.tousLesAuteurs()){
-            if(a.getNom().compareToIgnoreCase(nomRecherche) == 0){
+            if(a.getNom().contains(nomRecherche)){
                 auteursQuiMatchent.add(a);
             }
         }

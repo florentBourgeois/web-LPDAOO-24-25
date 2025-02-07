@@ -95,7 +95,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/bibliotook/auteur/Mike",
+					"raw": "localhost:8080/bibliotook/auteur/Fr",
 					"host": [
 						"localhost"
 					],
@@ -103,7 +103,7 @@
 					"path": [
 						"bibliotook",
 						"auteur",
-						"Mike"
+						"Fr"
 					]
 				}
 			},
