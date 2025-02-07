@@ -1,6 +1,6 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 
-import fr.uha.serfa.lpdaoo25.BiblioTook.model.Autheur;
+import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
 import fr.uha.serfa.lpdaoo25.BiblioTook.utils.BibliothequeFactory;
@@ -14,16 +14,16 @@ public class BibliotookController {
 
 
     @GetMapping("/bibliotook/autheur")
-    public Autheur basicAutheur(){
-        return new Autheur();
+    public Auteur basicAutheur(){
+        return new Auteur();
     }
 
     @GetMapping("/bibliotook/autheurLivre")
-    public AutheurSecurise autheurAvecLivre(){
-        Autheur a = new Autheur();
+    public AuteurSecurise autheurAvecLivre(){
+        Auteur a = new Auteur();
         Livre l = new Livre("encore 50 nuances de gray", "OASJ", LocalDate.now(), a);
         a.addLivre(l);
-        return new AutheurSecurise(a);
+        return new AuteurSecurise(a);
     }
 
 

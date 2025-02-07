@@ -1,12 +1,10 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Autheur {
+public class Auteur {
 
     private String nom = "James";
     private String prenom = "Erika Leonard";
@@ -14,10 +12,10 @@ public class Autheur {
     private List<Livre> livres = new ArrayList<>();
     public String password = "monPass";
 
-    public Autheur() {
+    public Auteur() {
     }
 
-    public Autheur(String nom, String prenom, LocalDate naissance) {
+    public Auteur(String nom, String prenom, LocalDate naissance) {
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
@@ -34,6 +32,7 @@ public class Autheur {
     public LocalDate getDateNaissance() {
         return naissance;
     }
+
 
     public List<Livre> getLivres() {
         return livres;

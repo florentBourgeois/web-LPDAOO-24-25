@@ -12,7 +12,7 @@ public class Bibliotheque {
 
     public Bibliotheque() {
         livres.add(new Livre());
-        livres.add(new Livre("Jardinage 2024", "1028347SHCI", LocalDate.now(), new Autheur("Florent", "Bourgeois", LocalDate.now())));
+        livres.add(new Livre("Jardinage 2024", "1028347SHCI", LocalDate.now(), new Auteur("Florent", "Bourgeois", LocalDate.now())));
 
     }
 

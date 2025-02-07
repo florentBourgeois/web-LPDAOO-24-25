@@ -6,18 +6,18 @@ public class Livre {
     private String titre = "50 nuances de Grey";
     private String ISBN = "1083KZH9D";
     private LocalDate datePublication = LocalDate.of(2012,04,03);
-    private Autheur autheur = new Autheur();
+    private Auteur auteur = new Auteur();
 
     public Livre() {
-        this.autheur.addLivre(this);
+        this.auteur.addLivre(this);
     }
 
-    public Livre(String titre, String ISBN, LocalDate datePublication, Autheur autheur) {
+    public Livre(String titre, String ISBN, LocalDate datePublication, Auteur auteur) {
         this.titre = titre;
         this.ISBN = ISBN;
         this.datePublication = datePublication;
-        this.autheur = autheur;
-        this.autheur.addLivre(this);
+        this.auteur = auteur;
+        this.auteur.addLivre(this);
     }
 
     public String getTitre() {
@@ -32,7 +32,7 @@ public class Livre {
         return datePublication;
     }
 
-    public Autheur getAutheur() {
-        return autheur;
+    public Auteur getAutheur() {
+        return auteur;
     }
 }
