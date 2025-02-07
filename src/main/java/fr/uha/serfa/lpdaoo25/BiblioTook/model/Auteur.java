@@ -1,5 +1,7 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,7 @@ public class Auteur {
     }
 
 
+    @JsonIgnore
     public List<Livre> getLivres() {
         return livres;
     }
