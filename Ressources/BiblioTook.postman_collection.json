@@ -65,7 +65,7 @@
 			"response": []
 		},
 		{
-			"name": "livre par défaut",
+			"name": "autheur avec livre",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -81,6 +81,50 @@
 					"path": [
 						"bibliotook",
 						"autheur"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "livre par défaut",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bibliotook/livre",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bibliotook",
+						"livre"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "bibliotheque par defaut",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bibliotook/livre",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bibliotook",
+						"livre"
 					]
 				}
 			},
