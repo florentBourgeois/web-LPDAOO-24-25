@@ -22,6 +22,13 @@ public class AuteurSecurise {
             LivreSansAuteur lsa = new LivreSansAuteur(aTransformer);
             this.livres.add(lsa);
         }
+        // solution sous forme de stream plutot que boucle for :
+        /*
+        this.livres = a.getLivres().stream()
+            .map(LivreSansAuteur::new)
+            .collect(Collectors.toList());
+
+         */
     }
 
 }

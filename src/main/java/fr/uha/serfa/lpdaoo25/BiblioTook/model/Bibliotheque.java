@@ -2,7 +2,9 @@ package fr.uha.serfa.lpdaoo25.BiblioTook.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Bibliotheque {
 
@@ -32,6 +34,21 @@ public class Bibliotheque {
 
     public List<Livre> getLivres() {
         return livres;
+    }
+
+    public Set<Auteur> tousLesAuteurs(){
+        Set<Auteur> auteurs = new HashSet<>();
+        for (Livre l : this.livres){
+            auteurs.add(l.getAutheur());
+        }
+        return auteurs;
+    }
+
+    public Set<Auteur> auteurParNom(String nomRecherché){
+        Set<Auteur> auteursQuiMatchent = new HashSet<>();
+        //???
+        //???
+        return  auteursQuiMatchent;
     }
 
 

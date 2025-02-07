@@ -19,9 +19,9 @@ class Auteur {
     LocalDate naissance
 }
 
-Bibliotheque -> Livre : *
+Bibliotheque -> "*" Livre
 Livre -> Auteur
-Auteur -> Livre
+Auteur -> "*" Livre
 
 
 note "/bibliotheque renvoit LA bibliothèque de votre projet. \nElle contient au moins 4 livres qui ont chacun un autheur" as N1

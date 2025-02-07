@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @RestController
 public class BibliotookController {
@@ -32,6 +34,9 @@ public class BibliotookController {
 
     @GetMapping( "/bibliotook/auteur/XYZ")
     public String getAuteurByName() {
+        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
+        Set<Auteur> auteurs = b.tousLesAuteurs();
+
         return "name";
 
     }
