@@ -39,7 +39,7 @@ public class Bibliotheque {
     public Set<Auteur> tousLesAuteurs(){
         Set<Auteur> auteurs = new HashSet<>();
         for (Livre l : this.livres){
-            auteurs.add(l.getAutheur());
+            auteurs.add(l.getAuteur());
         }
         return auteurs;
     }
