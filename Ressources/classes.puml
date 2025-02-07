@@ -13,20 +13,20 @@ class Livre {
 }
 
 
-class Autheur {
+class Auteur {
     String nom
     String prenom
     LocalDate naissance
 }
 
 Bibliotheque -> Livre : *
-Livre -> Autheur
-Autheur -> Livre
+Livre -> Auteur
+Auteur -> Livre
 
 
 note "/bibliotheque renvoit LA bibliothèque de votre projet. \nElle contient au moins 4 livres qui ont chacun un autheur" as N1
 N1 .. Bibliotheque
 
 note "V2 ajouter à l'auteur les livres qu'il a rédigé" as N2
-N2 .. Autheur
+N2 .. Auteur
 @enduml
