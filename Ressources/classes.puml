@@ -3,6 +3,7 @@
 
 class Bibliotheque{
     String adresse
+    String nom
 }
 
 class Livre {
@@ -20,6 +21,8 @@ class Autheur {
 
 Bibliotheque -> Livre : *
 Livre -> Autheur
+Autheur -> Livre
+
 
 note "/bibliotheque renvoit LA bibliothèque de votre projet. \nElle contient au moins 4 livres qui ont chacun un autheur" as N1
 N1 .. Bibliotheque
