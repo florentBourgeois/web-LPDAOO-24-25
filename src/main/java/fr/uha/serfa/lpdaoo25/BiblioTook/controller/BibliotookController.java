@@ -1,5 +1,6 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 
+import fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto.AuteurSecurise;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;

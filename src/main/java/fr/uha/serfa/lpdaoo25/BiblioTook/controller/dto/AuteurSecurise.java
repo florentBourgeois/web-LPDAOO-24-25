@@ -1,4 +1,4 @@
-package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
+package fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto;
 
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
@@ -12,13 +12,16 @@ public class AuteurSecurise {
     public String nom = "James";
     public String prenom = "Erika Leonard";
     public LocalDate dateNaissance = LocalDate.of(1963, 03, 07);
-    public List<Livre> livres = new ArrayList<>();
+    public List<LivreSansAuteur> livres = new ArrayList<>();
 
     public AuteurSecurise(Auteur a){
         this.nom = a.getNom();
         this.dateNaissance = a.getDateNaissance();
         this.prenom = a.getPrenom();
-        this.livres = a.getLivres();
+        for (Livre aTransformer : a.getLivres()){
+            LivreSansAuteur lsa = new LivreSansAuteur(aTransformer);
+            this.livres.add(lsa);
+        }
     }
 
 }
