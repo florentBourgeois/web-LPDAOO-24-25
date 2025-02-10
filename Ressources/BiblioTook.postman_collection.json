@@ -132,6 +132,69 @@
 			"response": []
 		},
 		{
+			"name": "ajouter livre",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titre\" : \"postman\",\n    \"datePublication\" : \"2021-04-10\",\n    \"auteur\" : {\n        \"nom\" : \"postman\",\n        \"prenom\" : \"postman\"\n    },\n    \"isbn\" : \"AAAA18Z83AAA\"\n\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/bibliotook/livre",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bibliotook",
+						"livre"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ajouter livre a auteur existant",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"titre\": \"Le livre de fred\",\n    \"ISBN\" : \"AAAAAAA\",\n    \"datePublication\" : \"2021-04-10\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/bibliotook/livre/Fred",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bibliotook",
+						"livre",
+						"Fred"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "bibliotheque par defaut",
 			"request": {
 				"auth": {
@@ -170,37 +233,6 @@
 					"path": [
 						"bibliotook",
 						"bibliothequeBig"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ajouter livre",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"titre\": \"pas 50 nuances de grey\",\n    \"ISBN\" : \"AAAAAAA\",\n    \"datePublication\" : \"2021-04-10\",\n    \"auteur\" : {\n        \"nom\" : \"postman\"\n    }\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "localhost:8080/bibliotook/livre",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"bibliotook",
-						"livre"
 					]
 				}
 			},

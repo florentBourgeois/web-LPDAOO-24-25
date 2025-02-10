@@ -51,6 +51,14 @@ public class BibliotookController {
     }
 
 
+    /**TODO
+     * une route qui permet d'ajouter un livre à la bibliothèque
+     * l'auteur du livre est passé en argument de la route
+     * si l'auteur n'existe pas dans la bibliothèque le livre n'est pas ajouté
+     * la route ajouter "ajouter livre a auteur existant" de postman permet de tester cette route
+     * @return
+     */
+
     @GetMapping("/bibliotook/livre")
     public Livre basicLivre(){
         return new Livre();
