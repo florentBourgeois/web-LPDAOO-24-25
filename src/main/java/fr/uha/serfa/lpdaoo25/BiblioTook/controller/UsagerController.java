@@ -31,11 +31,10 @@ public class UsagerController {
 
     }
 
-    /*
+
     @GetMapping("/usager")
     public List<Usager> getAllUsager(){
-
-        return
+        return lesUsagerDeLaDB.findAll();
     }
 //*/
 
