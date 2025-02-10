@@ -30,6 +30,32 @@
 				},
 				{
 					"name": "usager par id (2)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"response contains fred\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.deep.include({",
+									"        \"id\": 2,",
+									"        \"nom\": \"Fred\",",
+									"        \"prenom\": \"Fred\",",
+									"        \"naissance\": \"2025-02-10\",",
+									"        \"nbrLivresEmprunt\": 107",
+									"    });",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -49,7 +75,55 @@
 					"response": []
 				},
 				{
+					"name": "usager par id (100) inexistant",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager/100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager",
+								"100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "supprime usager id 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -99,7 +173,7 @@
 				{
 					"name": "update usager 1 en John",
 					"request": {
-						"method": "PUT",
+						"method": "PATCH",
 						"header": [],
 						"body": {
 							"mode": "raw",
