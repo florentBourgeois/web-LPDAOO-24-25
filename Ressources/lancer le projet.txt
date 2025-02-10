@@ -1,0 +1,5 @@
+avec maven :
+- mvn clean install spring-boot:run
+
+avec java : prendre le .jar (qui est caché dans le dossier target
+- java -jar target/BiblioTook-0.0.1-SNAPSHOT.jar
