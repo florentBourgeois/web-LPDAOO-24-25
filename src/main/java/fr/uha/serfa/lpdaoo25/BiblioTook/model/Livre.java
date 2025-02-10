@@ -43,5 +43,8 @@ public class Livre {
         return auteur;
     }
 
-
+    public void setAuteur(Auteur a) {
+        this.auteur = a;
+        a.addLivre(this);
+    }
 }

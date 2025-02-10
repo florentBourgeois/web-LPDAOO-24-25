@@ -5,6 +5,8 @@ import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
 import fr.uha.serfa.lpdaoo25.BiblioTook.utils.BibliothequeFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -77,7 +79,7 @@ public class BibliotookController {
     }
 
 
-    /**TODO
+    /**
      * une route qui permet d'ajouter un livre à la bibliothèque
      * l'auteur du livre est passé en argument de la route
      * si l'auteur n'existe pas dans la bibliothèque le livre n'est pas ajouté
@@ -85,6 +87,20 @@ public class BibliotookController {
      * mappée sur /bibliotook/livre/auteurNom
      * @return
      */
+    @PostMapping("/bibliotook/livre/{name}")
+    public ResponseEntity<Bibliotheque> ajouterLivreCorrectement(@RequestBody Livre l,  @PathVariable(value = "name") String nomAuteur) {
+        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
+        Set<Auteur> auteurs = b.auteurParNom(nomAuteur);
+
+        for(Auteur a : auteurs){
+            if(a.getNom().equals(nomAuteur)) {
+                b.getLivres().add(l);
+                l.setAuteur(a);
+                return new ResponseEntity(b, HttpStatus.CREATED);
+            }
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
 
     /**
      * renvoi une nouvelle instance de livre

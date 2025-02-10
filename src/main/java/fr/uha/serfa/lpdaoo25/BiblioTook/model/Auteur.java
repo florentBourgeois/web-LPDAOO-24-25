@@ -39,7 +39,6 @@ public class Auteur {
         return naissance;
     }
 
-
     @JsonIgnore
     public List<Livre> getLivres() {
         return livres;
