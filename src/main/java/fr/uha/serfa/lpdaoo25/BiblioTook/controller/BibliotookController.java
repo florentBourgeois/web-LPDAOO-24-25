@@ -28,7 +28,7 @@ public class BibliotookController {
         System.out.println(f.artist().name());
         System.out.println(f.timeAndDate().birthday(20,500));
 
-        BibliothequeFactory.addRandomBooksToBigBib(1000);
+        BibliothequeFactory.addRandomBooksToBigBib(100);
     }
 
     /**
@@ -57,7 +57,7 @@ public class BibliotookController {
         Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
         b.getLivres().add(l);
 
-        return new Auteur();
+        return a;
     }
 
     /**

@@ -95,7 +95,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/bibliotook/auteur/Fr",
+					"raw": "localhost:8080/bibliotook/auteur/Fred",
 					"host": [
 						"localhost"
 					],
@@ -103,7 +103,29 @@
 					"path": [
 						"bibliotook",
 						"auteur",
-						"Fr"
+						"Fred"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ajout random auteur",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/bibliotook/auteur",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bibliotook",
+						"auteur"
 					]
 				}
 			},
@@ -172,7 +194,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"titre\": \"Le livre de fred\",\n    \"ISBN\" : \"AAAAAAA\",\n    \"datePublication\" : \"2021-04-10\"\n}",
+					"raw": "{\n    \"titre\": \"Le livre de fred\",\n    \"isbn\" : \"AAAAAAA\",\n    \"datePublication\" : \"2021-04-10\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
