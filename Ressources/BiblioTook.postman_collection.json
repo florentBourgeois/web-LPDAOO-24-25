@@ -7,6 +7,126 @@
 	},
 	"item": [
 		{
+			"name": "usagers",
+			"item": [
+				{
+					"name": "all usager",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "usager par id (2)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "supprime usager id 2",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ajouter usager Mike",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nom\": \"Mike\",\n        \"prenom\": \"Tyson\",\n        \"naissance\": \"2000-11-11\",\n        \"nbrLivresEmprunt\": 10\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update usager 1 en John",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"nom\": \"John\",\n        \"prenom\": \"Doe\",\n        \"naissance\": \"2000-01-01\",\n        \"nbrLivresEmprunt\": 9999999\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "hello world",
 			"request": {
 				"method": "GET",
