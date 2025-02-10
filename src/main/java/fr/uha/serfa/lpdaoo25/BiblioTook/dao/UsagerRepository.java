@@ -9,4 +9,6 @@ public interface UsagerRepository extends JpaRepository<Usager, Long> {
 
 
 
+
+
 }

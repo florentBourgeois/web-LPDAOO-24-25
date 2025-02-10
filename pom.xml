@@ -58,13 +58,22 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!--
 
-		<!-- https://mvnrepository.com/artifact/net.datafaker/datafaker -->
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <scope>runtime</scope>
+</dependency>
+-->
+
+<!-- https://mvnrepository.com/artifact/net.datafaker/datafaker -->
 		<dependency>
 			<groupId>net.datafaker</groupId>
 			<artifactId>datafaker</artifactId>
 			<version>2.4.2</version>
 		</dependency>
+
 
 	</dependencies>
 
