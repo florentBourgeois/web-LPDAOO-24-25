@@ -41,6 +41,25 @@ public class BibliotookController {
         return new Auteur();
     }
 
+    @PostMapping("/bibliotook/auteur")
+    public Auteur ajoutAuteurAleatoire(){
+        Faker faker = new Faker();
+        String nom = faker.onePiece().character();
+        String prenom = faker.tron().character();
+        LocalDate naissance = faker.timeAndDate().birthday(19, 500);
+        Auteur a = new Auteur(nom, prenom, naissance);
+
+        String titre = faker.book().title();
+        String isbn = faker.code().isbn10();
+        LocalDate datePublication = faker.timeAndDate().birthday(19, 500);
+        Livre l = new Livre(titre, isbn, datePublication, a);
+
+        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
+        b.getLivres().add(l);
+
+        return new Auteur();
+    }
+
     /**
      * renvoit un auteur sécurisé ; un auteur sans password et dont le livre n'affiche pas son auteur (evite la récursivité)
      * explicite l'usage de DTO pour masquer des informations
