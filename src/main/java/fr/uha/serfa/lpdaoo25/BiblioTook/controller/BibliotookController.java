@@ -44,8 +44,10 @@ public class BibliotookController {
     }
 
     @PostMapping("/bibliotook/livre")
-    public Livre ajouterLivre(@RequestBody Livre l){
-        return  l;
+    public Bibliotheque ajouterLivre(@RequestBody Livre l){
+        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
+        b.getLivres().add(l);
+        return b;
     }
 
 
