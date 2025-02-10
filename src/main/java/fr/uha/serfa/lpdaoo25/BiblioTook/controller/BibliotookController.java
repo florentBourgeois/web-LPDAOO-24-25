@@ -5,6 +5,7 @@ import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
 import fr.uha.serfa.lpdaoo25.BiblioTook.utils.BibliothequeFactory;
+import net.datafaker.Faker;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,14 @@ import java.util.Set;
 @RestController
 public class BibliotookController {
 
+    public BibliotookController() {
+        Faker f = new Faker();
+        System.out.println(f.backToTheFuture().quote());
+        System.out.println(f.artist().name());
+        System.out.println(f.timeAndDate().birthday(20,500));
+
+        BibliothequeFactory.addRandomBooksToBigBib(1000);
+    }
 
     /**
      * renvoi une nouvelle instance d'auteur

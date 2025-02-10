@@ -2,6 +2,7 @@ package fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto;
 
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
+import net.datafaker.Faker;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
