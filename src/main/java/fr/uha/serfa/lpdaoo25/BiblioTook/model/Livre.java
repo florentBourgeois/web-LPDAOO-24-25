@@ -2,6 +2,10 @@ package fr.uha.serfa.lpdaoo25.BiblioTook.model;
 
 import java.time.LocalDate;
 
+/**
+ * représente un livre
+ * un livre est rédigé par UN auteur
+ */
 public class Livre {
     private String titre = "50 nuances de Grey";
     private String ISBN = "1083KZH9D";

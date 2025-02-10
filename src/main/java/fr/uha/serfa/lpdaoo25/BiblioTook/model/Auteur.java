@@ -6,6 +6,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * représente un auteur de livre
+ * un auteur a rédigé des livres
+ */
 public class Auteur {
 
     private String nom = "James";

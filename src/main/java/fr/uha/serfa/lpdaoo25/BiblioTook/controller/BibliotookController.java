@@ -13,15 +13,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * illustration d'un controlleur "utile" pour un projet
+ */
 @RestController
 public class BibliotookController {
 
 
+    /**
+     * renvoi une nouvelle instance d'auteur
+     * mappé sur la route /bibliotook/auteur
+     * @return
+     */
     @GetMapping("/bibliotook/auteur")
     public Auteur basicAuteur(){
         return new Auteur();
     }
 
+    /**
+     * renvoit un auteur sécurisé ; un auteur sans password et dont le livre n'affiche pas son auteur (evite la récursivité)
+     * explicite l'usage de DTO pour masquer des informations
+     * mappé sur la route /bibliotook/auteurLivre
+     * @return
+     */
     @GetMapping("/bibliotook/auteurLivre")
     public AuteurSecurise auteurAvecLivre(){
         Auteur a = new Auteur();
@@ -30,7 +44,12 @@ public class BibliotookController {
         return new AuteurSecurise(a);
     }
 
-
+    /**
+     * permet de récupérer la liste de tous les auteurs dont le nom match avec le paramettre d'URL "name"
+     * mappé sur la route /bibliotook/auteur/name
+     * @param nomRecherche - mappé avec "name"
+     * @return les auteurs récupérés sont des auteurs sécurisés (pas de password, livres n'affichent pas leurs auteurs
+     */
     @GetMapping( "/bibliotook/auteur/{name}")
     public List<AuteurSecurise> getAuteurByName( @PathVariable(value = "name") String nomRecherche) {
         Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
@@ -43,6 +62,13 @@ public class BibliotookController {
         return auteurSecurises;
     }
 
+    /**
+     * premier post réalisé
+     * receptionne un livre sous forme de JSON et l'ajoute à la bibliothèque
+     * mappé sur /bibliotook/livre
+     * @param l - un livre transformé par jackson depuis le corp de la requete
+     * @return la bibliotèque avec le livre ajouté
+     */
     @PostMapping("/bibliotook/livre")
     public Bibliotheque ajouterLivre(@RequestBody Livre l){
         Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
@@ -56,19 +82,35 @@ public class BibliotookController {
      * l'auteur du livre est passé en argument de la route
      * si l'auteur n'existe pas dans la bibliothèque le livre n'est pas ajouté
      * la route ajouter "ajouter livre a auteur existant" de postman permet de tester cette route
+     * mappée sur /bibliotook/livre/auteurNom
      * @return
      */
 
+    /**
+     * renvoi une nouvelle instance de livre
+     * mappé sur la route /bibliotook/livre
+     * @return
+     */
     @GetMapping("/bibliotook/livre")
     public Livre basicLivre(){
         return new Livre();
     }
 
+    /**
+     * renvoi une nouvelle instance de bibliothèque
+     * mappé sur la route /bibliotook/bibliotheque
+     * @return
+     */
     @GetMapping("/bibliotook/bibliotheque")
     public Bibliotheque basicBibliotheque(){
         return new Bibliotheque();
     }
 
+    /**
+     * renvoi la bibliothèque singleton existant dans le serveur.
+     * mappé sur la route /bibliotook/bibliothequeBig
+     * @return
+     */
     @GetMapping("/bibliotook/bibliothequeBig")
     public Bibliotheque bigBibliotheque(){
         return BibliothequeFactory.getBigBibliotheque();

@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * représente une bibliothèque dans notre domaine (gestion de bibliothèques)
+ */
 public class Bibliotheque {
 
     private String adresse = "10 rue de la gare Mulhouse";
@@ -36,6 +39,10 @@ public class Bibliotheque {
         return livres;
     }
 
+    /**
+     * permet de connaitre l'ensemble des auteurs de la bibliothèque
+     * @return
+     */
     public Set<Auteur> tousLesAuteurs(){
         Set<Auteur> auteurs = new HashSet<>();
         for (Livre l : this.livres){
@@ -44,6 +51,11 @@ public class Bibliotheque {
         return auteurs;
     }
 
+    /**
+     * permet de connaitre tous les auteurs dont le NOM contient partiellement la chaine en paramettre
+     * @param nomRecherche
+     * @return
+     */
     public Set<Auteur> auteurParNom(String nomRecherche){
         Set<Auteur> auteursQuiMatchent = new HashSet<>();
         for (Auteur a : this.tousLesAuteurs()){
