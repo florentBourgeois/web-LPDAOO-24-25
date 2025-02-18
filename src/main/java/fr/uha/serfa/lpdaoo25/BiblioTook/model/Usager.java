@@ -20,6 +20,9 @@ public class Usager extends Utilisateur{
         return emprunt;
     }
 
+    public void setEmprunt(Livre emprunt) {
+        this.emprunt = emprunt;
+    }
 
     public Usager(String nom, String prenom, LocalDate naissance) {
         this.nom = nom;
