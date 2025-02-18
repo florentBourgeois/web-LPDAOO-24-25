@@ -33,7 +33,15 @@ public class Usager extends Utilisateur{
 
 
     public int getNbrLivresEmprunt() {
+        if(this.hasLivreEmprunt())
+            return 1;
         return 0;
+    }
+
+    public boolean hasLivreEmprunt(){
+        if(this.emprunt == null)
+            return false;
+        return true;
     }
 
 
