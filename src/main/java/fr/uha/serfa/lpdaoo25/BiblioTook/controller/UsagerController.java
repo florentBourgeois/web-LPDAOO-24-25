@@ -91,6 +91,21 @@ public class UsagerController {
 
 
 
+    @PostMapping("/usager/{idUsager}/rend")
+    public ResponseEntity rendre(@PathVariable(name = "idUsager") Long idUsager){
+
+        Optional<Usager> optionalUsager = lesUsagerDeLaDB.findById(idUsager);
+        if(! optionalUsager.isPresent())
+            return ResponseEntity.notFound().build();
+
+        Usager u = optionalUsager.get();
+
+        u.setEmprunt(null);
+        lesUsagerDeLaDB.save(u);
+
+        return ResponseEntity.ok().build();
+    }
+
 
 
 

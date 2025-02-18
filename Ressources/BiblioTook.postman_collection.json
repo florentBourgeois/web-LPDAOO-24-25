@@ -171,12 +171,12 @@
 					"response": []
 				},
 				{
-					"name": "(2) emprunte livre (3)",
+					"name": "(114) emprunte livre (30)",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/bibliotook/usager/2/emprunte/3",
+							"raw": "localhost:8080/bibliotook/usager/114/emprunte/30",
 							"host": [
 								"localhost"
 							],
@@ -184,21 +184,21 @@
 							"path": [
 								"bibliotook",
 								"usager",
-								"2",
+								"114",
 								"emprunte",
-								"3"
+								"30"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "(2) rend livre",
+					"name": "(114) rend livre",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/bibliotook/usager/2/rend",
+							"raw": "localhost:8080/bibliotook/usager/114/rend",
 							"host": [
 								"localhost"
 							],
@@ -206,7 +206,7 @@
 							"path": [
 								"bibliotook",
 								"usager",
-								"2",
+								"114",
 								"rend"
 							]
 						}
