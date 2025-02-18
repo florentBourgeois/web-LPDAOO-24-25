@@ -1,7 +1,9 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 
 
+import fr.uha.serfa.lpdaoo25.BiblioTook.dao.LivreRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.UsagerRepository;
+import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Usager;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +18,11 @@ import java.util.Optional;
 public class UsagerController {
 
     private UsagerRepository lesUsagerDeLaDB;
+    private LivreRepository livreRepo;
 
-    public UsagerController(UsagerRepository ur) {
+    public UsagerController(UsagerRepository ur, LivreRepository lr) {
         this.lesUsagerDeLaDB = ur;
+        this.livreRepo = lr;
 
         lesUsagerDeLaDB.save(new Usager());
         Usager u = new Usager("Fred", "Fred", LocalDate.now());
@@ -63,6 +67,26 @@ public class UsagerController {
         u.setNom(usagerData.getNom());
         u.setPrenom(usagerData.getPrenom());
         lesUsagerDeLaDB.save(u);
+    }
+
+    @PostMapping("/usager/{idUsager}/emprunte/{idLivre}")
+    public ResponseEntity emprunter(@PathVariable(name = "idUsager") Long idUsager, @PathVariable Long idLivre){
+
+        Optional<Usager> optionalUsager = lesUsagerDeLaDB.findById(idUsager);
+        if(! optionalUsager.isPresent())
+            return ResponseEntity.notFound().build();
+
+        Optional<Livre> optionalLivre = livreRepo.findById(idLivre);
+        if(! optionalLivre.isPresent())
+            return ResponseEntity.notFound().build();
+
+        Usager u = optionalUsager.get();
+        Livre l = optionalLivre.get();
+
+        u.setEmprunt(l);
+        lesUsagerDeLaDB.save(u);
+
+        return ResponseEntity.ok().build();
     }
 
 

@@ -10,6 +10,7 @@ import java.util.Set;
 @Repository
 public interface UsagerRepository extends JpaRepository<Usager, Long> {
 
+    public Usager getById(Long id);
 
     Set<Usager> findDistinctByEmpruntNotNull();
 }
