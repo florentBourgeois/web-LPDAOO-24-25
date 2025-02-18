@@ -12,14 +12,7 @@ import java.util.List;
  * un auteur a rédigé des livres
  */
 @Entity
-public class Auteur {
-    @Id @GeneratedValue
-    private Long id;
-
-    private String nom = "James";
-    private String prenom = "Erika Leonard";
-    private LocalDate naissance = LocalDate.of(1963, 03, 07);
-
+public class Auteur extends Utilisateur{
     @OneToMany
     private List<Livre> livres = new ArrayList<>();
     public String password = "monPass";
@@ -33,30 +26,6 @@ public class Auteur {
         this.naissance = naissance;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public LocalDate getNaissance() {
-        return naissance;
-    }
-
-    public void setNaissance(LocalDate naissance) {
-        this.naissance = naissance;
-    }
-
     public void setLivres(List<Livre> livres) {
         this.livres = livres;
     }
@@ -67,18 +36,6 @@ public class Auteur {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public LocalDate getDateNaissance() {
-        return naissance;
     }
 
     @JsonIgnore
