@@ -21,7 +21,7 @@ public class UsagerController {
         this.lesUsagerDeLaDB = ur;
 
         lesUsagerDeLaDB.save(new Usager());
-        Usager u = new Usager("Fred", "Fred", LocalDate.now(), 107);
+        Usager u = new Usager("Fred", "Fred", LocalDate.now());
         lesUsagerDeLaDB.save(u);
 
         System.out.println(lesUsagerDeLaDB.findAll());
@@ -55,14 +55,13 @@ public class UsagerController {
     }
 
     @PatchMapping("/usager/{id}")
-    public void deleteUsager(@PathVariable Long id, @RequestBody Usager usagerData){
+    public void updateUsager(@PathVariable Long id, @RequestBody Usager usagerData){
         Usager u = lesUsagerDeLaDB.getReferenceById(id);
         if(u == null)
             return;
         u.setNaissance(usagerData.getNaissance());
         u.setNom(usagerData.getNom());
         u.setPrenom(usagerData.getPrenom());
-        u.setNbrLivresEmprunt(usagerData.getNbrLivresEmprunt());
         lesUsagerDeLaDB.save(u);
     }
 

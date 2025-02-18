@@ -3,6 +3,8 @@ package fr.uha.serfa.lpdaoo25.BiblioTook.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Usager {
@@ -13,7 +15,17 @@ public class Usager {
     private String nom;
     private String prenom;
     private LocalDate naissance;
-    private int nbrLivresEmprunt;
+
+    @ElementCollection
+    private List<Address> adresses = new ArrayList<>();
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn
+    private Livre emprunt;
+
+    public Livre getEmprunt() {
+        return emprunt;
+    }
 
     public Long getId() {
         return id;
@@ -23,11 +35,10 @@ public class Usager {
         this.id = id;
     }
 
-    public Usager(String nom, String prenom, LocalDate naissance, int nbrLivresEmprunt) {
+    public Usager(String nom, String prenom, LocalDate naissance) {
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
-        this.nbrLivresEmprunt = nbrLivresEmprunt;
     }
 
     public Usager() {
@@ -58,12 +69,9 @@ public class Usager {
     }
 
     public int getNbrLivresEmprunt() {
-        return nbrLivresEmprunt;
+        return 0;
     }
 
-    public void setNbrLivresEmprunt(int nbrLivresEmprunt) {
-        this.nbrLivresEmprunt = nbrLivresEmprunt;
-    }
 
     @Override
     public String toString() {
@@ -72,7 +80,6 @@ public class Usager {
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", naissance=" + naissance +
-                ", nbrLivresEmprunt=" + nbrLivresEmprunt +
                 '}';
     }
 }
