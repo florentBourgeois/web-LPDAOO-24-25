@@ -13,7 +13,7 @@ import java.util.List;
  */
 @Entity
 public class Auteur extends Utilisateur{
-    @OneToMany
+    @OneToMany(mappedBy = "auteur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Livre> livres = new ArrayList<>();
     public String password = "monPass";
 

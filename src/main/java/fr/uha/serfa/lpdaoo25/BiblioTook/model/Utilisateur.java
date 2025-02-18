@@ -6,7 +6,6 @@ import java.time.LocalDate;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
 public abstract class Utilisateur {
     @Id
     @GeneratedValue

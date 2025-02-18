@@ -171,6 +171,49 @@
 					"response": []
 				},
 				{
+					"name": "(2) emprunte livre (3)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager/2/emprunte/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager",
+								"2",
+								"emprunte",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "(2) rend livre",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager/2/rend",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager",
+								"2",
+								"rend"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "update usager 1 en John",
 					"request": {
 						"method": "PATCH",
@@ -193,6 +236,94 @@
 							"path": [
 								"bibliotook",
 								"usager"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auteur",
+			"item": [
+				{
+					"name": "livres de l'auteur 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/auteur/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"auteur",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "gestion",
+			"item": [
+				{
+					"name": "tous les emprunts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/emprunts",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"emprunts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tous les disponibles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/dispos",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"dispos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tous les emprunteur",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/bibliotook/usager/emprunteurs",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"bibliotook",
+								"usager",
+								"emprunteurs"
 							]
 						}
 					},

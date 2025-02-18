@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Entity
 public class Livre {
     @Id @GeneratedValue
-    Long id;
+    private Long id;
 
     private String titre = "50 nuances de Grey";
     private String ISBN = "1083KZH9D";
