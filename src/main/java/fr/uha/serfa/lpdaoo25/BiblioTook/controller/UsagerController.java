@@ -5,6 +5,7 @@ import fr.uha.serfa.lpdaoo25.BiblioTook.dao.LivreRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.UsagerRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Usager;
+import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,10 +18,11 @@ import java.util.Optional;
 @RequestMapping("/bibliotook")
 public class UsagerController {
 
+    private final ResourcePatternResolver resourcePatternResolver;
     private UsagerRepository lesUsagerDeLaDB;
     private LivreRepository livreRepo;
 
-    public UsagerController(UsagerRepository ur, LivreRepository lr) {
+    public UsagerController(UsagerRepository ur, LivreRepository lr, ResourcePatternResolver resourcePatternResolver) {
         this.lesUsagerDeLaDB = ur;
         this.livreRepo = lr;
 
@@ -29,7 +31,7 @@ public class UsagerController {
         lesUsagerDeLaDB.save(u);
 
         System.out.println(lesUsagerDeLaDB.findAll());
-
+        this.resourcePatternResolver = resourcePatternResolver;
     }
 
 
@@ -82,6 +84,14 @@ public class UsagerController {
 
         Usager u = optionalUsager.get();
         Livre l = optionalLivre.get();
+
+        // deux sécurités à mettre en place
+        // 1) est ce que l'usager a déja un emprunt ?
+        // 2) est ce que le livre est déja emprunté ?
+        if(u.getEmprunt() != null)
+            return ResponseEntity.badRequest().build();
+
+
 
         u.setEmprunt(l);
         lesUsagerDeLaDB.save(u);
