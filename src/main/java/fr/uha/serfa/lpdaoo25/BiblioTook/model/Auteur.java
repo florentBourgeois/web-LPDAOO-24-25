@@ -46,4 +46,13 @@ public class Auteur extends Utilisateur{
     public void addLivre(Livre l){
         this.livres.add(l);
     }
+
+    @Override
+    public String toString() {
+        return "Auteur{" +
+                ((id == null) ? "" : id)  +
+                ", " + nom +  " " + prenom +
+                ", " + password +
+                '}';
+    }
 }
