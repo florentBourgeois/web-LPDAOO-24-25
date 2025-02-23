@@ -1,6 +1,7 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 
 import fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto.AuteurSecurise;
+import fr.uha.serfa.lpdaoo25.BiblioTook.dao.LivreRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
@@ -22,7 +23,11 @@ import java.util.Set;
 @RestController
 public class BibliotookController {
 
-    public BibliotookController() {
+    private LivreRepository livreRepo;
+
+    public BibliotookController(LivreRepository lr) {
+        this.livreRepo = lr;
+
         Faker f = new Faker();
         System.out.println(f.backToTheFuture().quote());
         System.out.println(f.artist().name());
@@ -158,6 +163,11 @@ public class BibliotookController {
     @GetMapping("/bibliotook/bibliothequeBig")
     public Bibliotheque bigBibliotheque(){
         return BibliothequeFactory.getBigBibliotheque();
+    }
+
+    @GetMapping("/bibliotook/dispos")
+    public List<Livre> livresDisponibles(){
+        return livreRepo.findAllDispo();
     }
 
 
