@@ -18,11 +18,10 @@ import java.util.Optional;
 @RequestMapping("/bibliotook")
 public class UsagerController {
 
-    private final ResourcePatternResolver resourcePatternResolver;
     private UsagerRepository lesUsagerDeLaDB;
     private LivreRepository livreRepo;
 
-    public UsagerController(UsagerRepository ur, LivreRepository lr, ResourcePatternResolver resourcePatternResolver) {
+    public UsagerController(UsagerRepository ur, LivreRepository lr) {
         this.lesUsagerDeLaDB = ur;
         this.livreRepo = lr;
 
@@ -31,7 +30,6 @@ public class UsagerController {
         lesUsagerDeLaDB.save(u);
 
         System.out.println(lesUsagerDeLaDB.findAll());
-        this.resourcePatternResolver = resourcePatternResolver;
     }
 
 
