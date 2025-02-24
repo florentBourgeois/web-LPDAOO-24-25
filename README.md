@@ -1,5 +1,11 @@
 # elements avancés
 
+## ne pas rédiger de getter/setter/...
+
+Vous pouvez utiliser le starter spring-boot lombok pour ne pas avoir à rédiger de code "boilerplate". 
+- un exemple est disponible dans la classe [Manga.java](src/main/java/fr/uha/serfa/lpdaoo25/BiblioTook/model/Manga.java)
+- 
+
 ## Hasher un mot de passe
 
 Pour hasher un mot de passe, il est possible d'utiliser la librairie `BCryptPasswordEncoder` de Spring Security.
