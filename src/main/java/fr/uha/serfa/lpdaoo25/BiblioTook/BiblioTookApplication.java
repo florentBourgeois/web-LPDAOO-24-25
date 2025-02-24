@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Bean;
 import javax.sound.midi.Soundbank;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.LocalDate;
+import java.util.Set;
 
 @SpringBootApplication
 public class BiblioTookApplication {
@@ -46,7 +47,10 @@ public class BiblioTookApplication {
 			usagerRepo.save(u2);
 			usagerRepo.save(u3);
 
-			System.out.println(usagerRepo.findDistinctByEmpruntNotNull());
+			//System.out.println(usagerRepo.findDistinctByEmpruntNotNull());
+
+			System.out.println(livreRepository.getAll());
+
 
 			System.out.println("\n\nFIN \n---------------");
 		};

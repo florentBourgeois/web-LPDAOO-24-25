@@ -3,9 +3,11 @@ package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 import fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto.AuteurSecurise;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.AuteurRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.LivreRepository;
+import fr.uha.serfa.lpdaoo25.BiblioTook.dao.UsagerRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
+import fr.uha.serfa.lpdaoo25.BiblioTook.model.Usager;
 import fr.uha.serfa.lpdaoo25.BiblioTook.utils.BibliothequeFactory;
 import net.datafaker.Faker;
 import org.springframework.http.HttpStatus;
@@ -26,10 +28,12 @@ public class BibliotookController {
 
     private final AuteurRepository auteurRepo;
     private final LivreRepository livreRepository;
+    private final UsagerRepository usagerRepository;
 
-    public BibliotookController(AuteurRepository ar, LivreRepository lr) {
+    public BibliotookController(AuteurRepository ar, LivreRepository lr, UsagerRepository ur) {
         this.auteurRepo = ar;
         this.livreRepository = lr;
+        this.usagerRepository = ur;
 
         Faker f = new Faker();
         System.out.println(f.backToTheFuture().quote());
@@ -163,5 +167,15 @@ public class BibliotookController {
         return BibliothequeFactory.getBigBibliotheque();
     }
 
+
+    @GetMapping("/emprunts")
+    public List<Livre> getListEmprunts(){
+        Set<Usager> lesEmprunteurs = usagerRepository.findDistinctByEmpruntNotNull();
+        List<Livre> emprunts = new ArrayList<>();
+        for (Usager u : lesEmprunteurs){
+            emprunts.add(u.getEmprunt());
+        }
+        return emprunts;
+    }
 
 }
