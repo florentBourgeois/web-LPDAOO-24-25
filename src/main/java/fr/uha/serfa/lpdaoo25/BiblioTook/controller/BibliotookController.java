@@ -1,6 +1,8 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 
 import fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto.AuteurSecurise;
+import fr.uha.serfa.lpdaoo25.BiblioTook.dao.AuteurRepository;
+import fr.uha.serfa.lpdaoo25.BiblioTook.dao.LivreRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
@@ -22,7 +24,13 @@ import java.util.Set;
 @RestController
 public class BibliotookController {
 
-    public BibliotookController() {
+    private final AuteurRepository auteurRepo;
+    private final LivreRepository livreRepository;
+
+    public BibliotookController(AuteurRepository ar, LivreRepository lr) {
+        this.auteurRepo = ar;
+        this.livreRepository = lr;
+
         Faker f = new Faker();
         System.out.println(f.backToTheFuture().quote());
         System.out.println(f.artist().name());
@@ -31,14 +39,10 @@ public class BibliotookController {
         BibliothequeFactory.addRandomBooksToBigBib(100);
     }
 
-    /**
-     * renvoi une nouvelle instance d'auteur
-     * mappé sur la route /bibliotook/auteur
-     * @return
-     */
+
     @GetMapping("/bibliotook/auteur")
-    public Auteur basicAuteur(){
-        return new Auteur();
+    public List<Auteur> getAuteurs(){
+        return this.auteurRepo.findAll();
     }
 
     @PostMapping("/bibliotook/auteur")
@@ -54,8 +58,8 @@ public class BibliotookController {
         LocalDate datePublication = faker.timeAndDate().birthday(19, 500);
         Livre l = new Livre(titre, isbn, datePublication, a);
 
-        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
-        b.getLivres().add(l);
+
+        a= this.auteurRepo.save(a);
 
         return a;
     }
@@ -82,8 +86,7 @@ public class BibliotookController {
      */
     @GetMapping( "/bibliotook/auteur/{name}")
     public List<AuteurSecurise> getAuteurByName( @PathVariable(value = "name") String nomRecherche) {
-        Bibliotheque b = BibliothequeFactory.getBigBibliotheque();
-        Set<Auteur> auteurs = b.auteurParNom(nomRecherche);
+        Set<Auteur> auteurs = auteurRepo.findByNom(nomRecherche);
 
         List<AuteurSecurise> auteurSecurises = new ArrayList<>();
         for (Auteur a : auteurs){
