@@ -25,12 +25,15 @@ public class Usager extends Utilisateur{
     }
 
     public Usager(String nom, String prenom, LocalDate naissance) {
+        this.type = "auteur";
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
     }
 
     public Usager() {
+        this.type = "auteur";
+
     }
 
 

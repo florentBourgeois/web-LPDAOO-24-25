@@ -11,6 +11,8 @@ public abstract class Utilisateur {
     @GeneratedValue
     protected Long id;
 
+    protected String type;
+
     protected String nom = "James";
     protected String prenom = "Erika Leonard";
     protected LocalDate naissance = LocalDate.of(1963, 03, 07);
@@ -45,5 +47,13 @@ public abstract class Utilisateur {
 
     public void setNaissance(LocalDate naissance) {
         this.naissance = naissance;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

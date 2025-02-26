@@ -369,7 +369,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\",\n    \"matchingPassword\" : \"salut\",\n    \"naissance\": \"1906-12-22\"\n\n\n\n}",
+							"raw": "{\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\",\n    \"matchingPassword\" : \"salut\",\n    \"naissance\": \"1906-12-22\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -528,6 +528,32 @@
 							"path": [
 								"securite",
 								"infoSecretes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utilisateurs",
+			"item": [
+				{
+					"name": "localhost:8080/utilisateurs",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/utilisateurs",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"utilisateurs"
 							]
 						}
 					},

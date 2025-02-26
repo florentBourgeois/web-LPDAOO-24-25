@@ -18,9 +18,11 @@ public class Auteur extends Utilisateur{
     public String password = "monPass";
 
     public Auteur() {
+        this.type = "auteur";
     }
 
     public Auteur(String nom, String prenom, LocalDate naissance) {
+        this.type = "auteur";
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
