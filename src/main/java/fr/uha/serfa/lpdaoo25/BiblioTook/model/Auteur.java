@@ -18,9 +18,11 @@ public class Auteur extends Utilisateur{
     public String password = "monPass";
 
     public Auteur() {
+        this.type = "auteur";
     }
 
     public Auteur(String nom, String prenom, LocalDate naissance) {
+        this.type = "auteur";
         this.nom = nom;
         this.prenom = prenom;
         this.naissance = naissance;
@@ -45,5 +47,14 @@ public class Auteur extends Utilisateur{
 
     public void addLivre(Livre l){
         this.livres.add(l);
+    }
+
+    @Override
+    public String toString() {
+        return "Auteur{" +
+                ((id == null) ? "" : id)  +
+                ", " + nom +  " " + prenom +
+                ", " + password +
+                '}';
     }
 }

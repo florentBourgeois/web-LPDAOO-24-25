@@ -49,7 +49,7 @@ public class BiblioTookApplication {
 
 			//System.out.println(usagerRepo.findDistinctByEmpruntNotNull());
 
-			System.out.println(livreRepository.getAll());
+			System.out.println(livreRepository.findAll());
 
 
 			System.out.println("\n\nFIN \n---------------");

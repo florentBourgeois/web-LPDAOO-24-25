@@ -332,6 +332,236 @@
 			]
 		},
 		{
+			"name": "securite",
+			"item": [
+				{
+					"name": "inscription d'un auteur",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\" : \"auteur inscrit\",\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\",\n    \"matchingPassword\" : \"salut\",\n    \"naissance\": \"1906-12-22\"\n\n\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/securite/creation",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"securite",
+								"creation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inscription echoue (nom null)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\",\n    \"matchingPassword\" : \"salut\",\n    \"naissance\": \"1906-12-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/securite/creation",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"securite",
+								"creation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "inscription echoue (password match pas) Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\" : \"auteur inscrit\",\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\",\n    \"matchingPassword\" : \"match pas\",\n    \"naissance\": \"1906-12-22\"\n\n\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/securite/creation",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"securite",
+								"creation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "connexion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\" : \"auteur inscrit\",\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\",\n    \"naissance\": \"1906-12-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/securite/conexion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"securite",
+								"conexion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "connexion existe pas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\" : \"auteur existe pas\",\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\",\n    \"naissance\": \"1906-12-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/securite/conexion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"securite",
+								"conexion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "connexion password erroné",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\" : \"auteur inscrit\",\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"azeicazoe\",\n    \"naissance\": \"1906-12-22\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/securite/conexion",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"securite",
+								"conexion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "infoSecretes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\" : \"auteur inscrit\",\n    \"prenom\" : \"password hashé\",\n    \"password\" : \"salut\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/securite/infoSecretes",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"securite",
+								"infoSecretes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utilisateurs",
+			"item": [
+				{
+					"name": "localhost:8080/utilisateurs",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/utilisateurs",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"utilisateurs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "hello world",
 			"request": {
 				"method": "GET",

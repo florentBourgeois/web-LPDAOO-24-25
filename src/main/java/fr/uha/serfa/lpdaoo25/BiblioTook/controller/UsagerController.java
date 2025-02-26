@@ -1,6 +1,7 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 
 
+import fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto.EmprunteurDTO;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.LivreRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.UsagerRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/bibliotook")
@@ -98,7 +101,6 @@ public class UsagerController {
     }
 
 
-
     @PostMapping("/usager/{idUsager}/rend")
     public ResponseEntity rendre(@PathVariable(name = "idUsager") Long idUsager){
 
@@ -112,6 +114,13 @@ public class UsagerController {
         lesUsagerDeLaDB.save(u);
 
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/usager/emprunteurs")
+    public Set<EmprunteurDTO> getEmprunteur(){
+        Set<Usager> emprunteursUsager = lesUsagerDeLaDB.findDistinctByEmpruntNotNull();
+        Set<EmprunteurDTO> emprunteurDTOS = emprunteursUsager.stream().map(EmprunteurDTO::fromUsager).collect(Collectors.toSet());
+        return emprunteurDTOS;
     }
 
 

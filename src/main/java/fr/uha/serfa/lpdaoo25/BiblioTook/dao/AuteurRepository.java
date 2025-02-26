@@ -8,9 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Set;
 
+import java.util.Optional;
+
 @Repository
 public interface AuteurRepository extends JpaRepository<Auteur, Long> {
 
 
     Set<Auteur> findByNom(String nom);
+    Optional<Auteur> findByNomAndPrenom(String nom, String prenom);
 }

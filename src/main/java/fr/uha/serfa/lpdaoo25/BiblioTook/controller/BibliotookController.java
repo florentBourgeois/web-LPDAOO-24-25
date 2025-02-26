@@ -1,17 +1,16 @@
 package fr.uha.serfa.lpdaoo25.BiblioTook.controller;
 
 import fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto.AuteurSecurise;
+import fr.uha.serfa.lpdaoo25.BiblioTook.controller.dto.LivreAuteurSeulementNomDTO;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.AuteurRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.LivreRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.dao.UsagerRepository;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Auteur;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Bibliotheque;
 import fr.uha.serfa.lpdaoo25.BiblioTook.model.Livre;
-import fr.uha.serfa.lpdaoo25.BiblioTook.model.Usager;
 import fr.uha.serfa.lpdaoo25.BiblioTook.utils.BibliothequeFactory;
 import net.datafaker.Faker;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +18,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * illustration d'un controlleur "utile" pour un projet
@@ -44,6 +44,10 @@ public class BibliotookController {
     }
 
 
+    /**
+     * Renvoie la liste de tous els auteurs existant dans la BDD
+     * @return
+     */
     @GetMapping("/bibliotook/auteur")
     public List<Auteur> getAuteurs(){
         return this.auteurRepo.findAll();
@@ -138,13 +142,14 @@ public class BibliotookController {
     }
 
     /**
-     * renvoi une nouvelle instance de livre
-     * mappé sur la route /bibliotook/livre
+     * renvoi la liste de tous les livres
+     * cette méthode mobilise un dto sous forme de record
+     * cette méthode mobilise les stream pour transformer les livres en livreDTO
      * @return
      */
     @GetMapping("/bibliotook/livre")
-    public Livre basicLivre(){
-        return new Livre();
+    public List<LivreAuteurSeulementNomDTO> basicLivre(){
+        return livreRepository.findAll().stream().map(LivreAuteurSeulementNomDTO::fromLivre).collect(Collectors.toList());
     }
 
     /**
@@ -167,15 +172,25 @@ public class BibliotookController {
         return BibliothequeFactory.getBigBibliotheque();
     }
 
+    @GetMapping("/bibliotook/dispos")
+    public List<Livre> livresDisponibles(){
+        return livreRepository.findAllDispo();
+    }
+
 
     @GetMapping("/emprunts")
     public List<Livre> getListEmprunts(){
+        /*
+        // approche par les objets (chercher les emprunteurs ; faire une liste avec leurs livres)
         Set<Usager> lesEmprunteurs = usagerRepository.findDistinctByEmpruntNotNull();
         List<Livre> emprunts = new ArrayList<>();
         for (Usager u : lesEmprunteurs){
             emprunts.add(u.getEmprunt());
         }
         return emprunts;
+        //*/
+        // approche par ORM
+        return livreRepository.findAllEmprunt();
     }
 
 }
